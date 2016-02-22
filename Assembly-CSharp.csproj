@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{3FAF9E0C-6D45-5429-8894-DACCF8F04D67}</ProjectGuid>
+    <ProjectGuid>{748EDFE2-3E5E-1864-480A-11F3F68CBB34}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -124,12 +124,13 @@
      <Compile Include="Assets\External\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
      <Compile Include="Assets\External\AstarPathfindingProject\changelog.cs" />
      <Compile Include="Assets\Scripts\CameraManager.cs" />
-     <Compile Include="Assets\Scripts\PoliceUI.cs" />
-     <Compile Include="Assets\Scripts\Timer.cs" />
      <Compile Include="Assets\Scripts\Control\RaycastInteraction.cs" />
      <Compile Include="Assets\Scripts\GameManager\UIContextMenu.cs" />
      <Compile Include="Assets\Scripts\Objects\AISimpleLerp.cs" />
      <Compile Include="Assets\Scripts\Objects\EntityStats.cs" />
+     <Compile Include="Assets\Scripts\PoliceUI.cs" />
+     <Compile Include="Assets\Scripts\Timer.cs" />
+     <Compile Include="Assets\Scripts\Waddle.cs" />
      <None Include="Assets\External\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh.shader" />
      <None Include="Assets\External\AstarPathfindingProject\Plugins\DotNetZip\DotNetZipLicense.txt" />
      <None Include="Assets\External\AstarPathfindingProject\ExampleScenes\Materials\Projector Multiply.shader" />
@@ -149,11 +150,11 @@
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
- <Reference Include="Pathfinding.Ionic.Zip.Reduced">
- <HintPath>A:/Desktop/SeriousGameJam16/Assets/External/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
- </Reference>
  <Reference Include="Pathfinding.JsonFx">
- <HintPath>A:/Desktop/SeriousGameJam16/Assets/External/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
+ <HintPath>C:/Users/Stuart/Documents/SeriousGameJam2/Assets/External/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
+ </Reference>
+ <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+ <HintPath>C:/Users/Stuart/Documents/SeriousGameJam2/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
