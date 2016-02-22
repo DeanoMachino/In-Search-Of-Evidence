@@ -124,6 +124,8 @@
      <Compile Include="Assets\External\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
      <Compile Include="Assets\External\AstarPathfindingProject\changelog.cs" />
      <Compile Include="Assets\Scripts\CameraManager.cs" />
+     <Compile Include="Assets\Scripts\PoliceUI.cs" />
+     <Compile Include="Assets\Scripts\Timer.cs" />
      <Compile Include="Assets\Scripts\Control\RaycastInteraction.cs" />
      <Compile Include="Assets\Scripts\GameManager\UIContextMenu.cs" />
      <Compile Include="Assets\Scripts\Objects\AISimpleLerp.cs" />
