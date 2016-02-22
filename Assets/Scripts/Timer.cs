@@ -24,7 +24,7 @@ public class Timer : MonoBehaviour
 		totalTimePassed += Time.deltaTime;
 		
 		// Minutes and seconds passed for display
-		minutes = Mathf.Floor (totalTimePassed / 60);
+		minutes = Mathf.Floor (totalTimePassed / 60 % 60);
 		seconds = Mathf.Floor(totalTimePassed % 60);
 		milliseconds = Mathf.Floor(totalTimePassed * 1000 % 1000);
 		
@@ -33,6 +33,6 @@ public class Timer : MonoBehaviour
 	
 	void OnGUI()
 	{
-		GUI.Box(new Rect(0.0f, 0.0f, 75.0f, 25.0f), timeString);
+		GUI.Box(new Rect(5.0f, 0.0f, 75.0f, 25.0f), timeString);
 	}
 }
