@@ -125,6 +125,7 @@
      <Compile Include="Assets\External\AstarPathfindingProject\changelog.cs" />
      <Compile Include="Assets\Scripts\Control\RaycastInteraction.cs" />
      <Compile Include="Assets\Scripts\GameManager\UIContextMenu.cs" />
+     <Compile Include="Assets\Scripts\Objects\AISimpleLerp.cs" />
      <Compile Include="Assets\Scripts\Objects\EntityStats.cs" />
      <None Include="Assets\External\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh.shader" />
      <None Include="Assets\External\AstarPathfindingProject\Plugins\DotNetZip\DotNetZipLicense.txt" />
