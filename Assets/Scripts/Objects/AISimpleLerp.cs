@@ -349,7 +349,6 @@ public class AISimpleLerp : MonoBehaviour {
                     tr.rotation = Quaternion.Slerp(rot, desiredRot, Time.deltaTime * rotationSpeed);
                 }
             }
-
             tr.position = nextPos;
         }
     }
