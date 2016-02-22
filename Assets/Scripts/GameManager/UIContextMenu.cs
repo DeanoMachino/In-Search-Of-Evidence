@@ -47,10 +47,32 @@ public class UIContextMenu : MonoBehaviour {
 
     void ObjectContextMenu() {
         switch (activeObject.transform.tag) {
-            case "Computer":
-                Transform t = activeObject.transform;
-                t.position.Set(t.position.x, 1, t.position.z);
-                bot.GetComponent<AISimpleLerp>().target = t;
+            case "Door":
+
+                break;
+            case "Couch":
+
+                break;
+            case "Table":
+
+                break;
+            case "Chair":
+
+                break;
+            case "Fridge":
+
+                break;
+            case "TV":
+
+                break;
+            case "Bed":
+
+                break;
+            case "Ipad":
+
+                break;
+            case "Laptop":
+                bot.GetComponent<AISimpleLerp>().target = activeObject.transform;
                 Debug.Log("ObjectContextMenu");
                 if (!activeObject.GetComponent<EntityStats>().inspected) {
                     if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Inspect")) {
@@ -58,6 +80,42 @@ public class UIContextMenu : MonoBehaviour {
                         activeObject.GetComponent<EntityStats>().InspectObject();
                     }
                 }
+                break;
+            case "Pendrive":
+
+                break;
+            case "Disks":
+
+                break;
+            case "Toilet":
+
+                break;
+            case "Sink":
+
+                break;
+            case "Shower":
+
+                break;
+            case "Counter":
+
+                break;
+            case "GameConsole":
+
+                break;
+            case "Computer":
+
+                break;
+            case "Router":
+
+                break;
+            case "Phone":
+
+                break;
+            case "Camera":
+
+                break;
+            case "PostItNotes":
+
                 break;
         }
         if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + menuDimensions.y - 20, menuDimensions.x, 20), "Back")) {
