@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{99A6CD6C-1AC3-B59F-E947-354288D0F109}") = "SeriousGameJam16", "Assembly-CSharp.csproj", "{3FAF9E0C-6D45-5429-8894-DACCF8F04D67}"
 EndProject
+Project("{99A6CD6C-1AC3-B59F-E947-354288D0F109}") = "SeriousGameJam16", "Assembly-CSharp-Editor.csproj", "{9E3684F1-0906-6C38-A331-E961EDB3AF8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{3FAF9E0C-6D45-5429-8894-DACCF8F04D67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FAF9E0C-6D45-5429-8894-DACCF8F04D67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FAF9E0C-6D45-5429-8894-DACCF8F04D67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E3684F1-0906-6C38-A331-E961EDB3AF8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E3684F1-0906-6C38-A331-E961EDB3AF8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E3684F1-0906-6C38-A331-E961EDB3AF8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E3684F1-0906-6C38-A331-E961EDB3AF8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
