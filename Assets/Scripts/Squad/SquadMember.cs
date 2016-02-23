@@ -50,10 +50,8 @@ public class SquadMember : MonoBehaviour {
 	}
 
 	void Interact() {
-
-		CompleteTask();
+        CompleteTask();
 	}
-
 
 }
 

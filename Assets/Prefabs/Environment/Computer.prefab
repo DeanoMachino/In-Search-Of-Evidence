@@ -202,6 +202,7 @@ MonoBehaviour:
   takenEvidence: 0
   disconnected: 0
   poweredOff: 0
+  tasked: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
