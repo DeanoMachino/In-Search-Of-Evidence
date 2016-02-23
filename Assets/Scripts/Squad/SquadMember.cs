@@ -8,6 +8,7 @@ public class SquadMember : MonoBehaviour {
     // Public
 	public SquadMemberState currentState = SquadMemberState.IDLE;
 	public Task currentTask;
+    public GameObject gameManager;
 
     // Private
     private float activateTime, currentTime, differenceTime;
@@ -87,6 +88,7 @@ public class SquadMember : MonoBehaviour {
                 break;
             case(TaskType.SEIZE):
                 currentTask.taskObject.SetActive(false);
+                gameManager.GetComponent<ScoreManager>().totalScore += currentTask.taskObject.GetComponent<EntityStats>().evidencePoints;
                 break;
             case(TaskType.TAKE_EVIDENCE):
                 break;
