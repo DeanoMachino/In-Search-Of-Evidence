@@ -3,7 +3,30 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Officer
+  - Environment
+  - Door
+  - Couch
+  - Table
+  - Chair
+  - Fridge
+  - TV
+  - Bed
+  - Ipad
+  - Laptop
+  - Pendrive
+  - Disks
+  - Toilet
+  - Sink
+  - Shower
+  - Counter
+  - GameConsole
+  - Computer
+  - Router
+  - Phone
+  - Camera
+  - PostItNotes
   layers:
   - Default
   - TransparentFX
@@ -13,8 +36,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Ground
+  - Environment
   - 
   - 
   - 
