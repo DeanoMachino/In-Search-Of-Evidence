@@ -12,20 +12,20 @@ public class SquadMember : MonoBehaviour {
     // Private
     private float activateTime, currentTime, differenceTime;
     private float seconds, milliseconds;
-    private bool isInspecting;
+    private bool isInspecting, taskCompleted;
     private string timeString;
 
 	// Use this for initialization
 	void Start ()
     {
         isInspecting = false;
-        currentTime = Time.deltaTime;
-        activateTime = Time.deltaTime;
+        taskCompleted = false;
+        currentTime = 0;
+        activateTime = 0;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        currentTime = Time.deltaTime;
+	void Update () {       
 
 		switch (currentState) {
 			case SquadMemberState.IDLE:
@@ -51,7 +51,8 @@ public class SquadMember : MonoBehaviour {
             currentState = SquadMemberState.INTERACTING;
         }*/
 
-
+        currentTime += Time.deltaTime;
+        differenceTime = currentTime - activateTime;
 	}
 
 	public void GiveTask(Task t) {
@@ -98,19 +99,16 @@ public class SquadMember : MonoBehaviour {
 
     void StartInspect()
     {
-        activateTime = Time.deltaTime;
+        activateTime = currentTime;
         isInspecting = true;
         Debug.Log("Inspecting " + currentTask.taskObject.transform.tag);
     }
 
     void Inspect()
     {
-        differenceTime = currentTime - activateTime;
         seconds = Mathf.Floor(differenceTime % 60);
         milliseconds = Mathf.Floor(differenceTime * 1000 % 1000);
         timeString = string.Format("{0:00}:{1:000}", seconds, milliseconds);
-
-
 
         if (differenceTime >= 5.0f)
         {
