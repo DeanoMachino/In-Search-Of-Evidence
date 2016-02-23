@@ -130,6 +130,7 @@
      <Compile Include="Assets\Scripts\Objects\AISimpleLerp.cs" />
      <Compile Include="Assets\Scripts\Objects\EntityStats.cs" />
      <Compile Include="Assets\Scripts\PinchZoom.cs" />
+     <Compile Include="Assets\Scripts\ScoreManager.cs" />
      <Compile Include="Assets\Scripts\Squad\PoliceUI.cs" />
      <Compile Include="Assets\Scripts\Squad\SquadManager.cs" />
      <Compile Include="Assets\Scripts\Squad\SquadMember.cs" />

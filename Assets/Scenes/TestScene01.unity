@@ -1583,9 +1583,10 @@ GameObject:
   - 114: {fileID: 897564637}
   - 114: {fileID: 897564638}
   - 114: {fileID: 897564639}
+  - 114: {fileID: 897564640}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1667,6 +1668,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d64a3be40916c745adb244c7abc9e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &897564640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 897564633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25a50141f72eb8e4f814b547921574c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalScore: 0
 --- !u!1001 &903714158
 Prefab:
   m_ObjectHideFlags: 0
