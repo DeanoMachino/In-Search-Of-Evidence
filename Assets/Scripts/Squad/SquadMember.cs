@@ -23,8 +23,13 @@ public class SquadMember : MonoBehaviour {
 				Interact();
 				break;
 			case SquadMemberState.NAVIGATING:
-				// If close enough to object
-				// Start interaction
+				// If squad member is near object
+				if(Vector3.Distance(gameObject.transform.position, currentTask.taskObject.transform.position) <= 2) {
+					Debug.Log("NEAR OBJECT");
+					// Interact with object and stop moving
+					currentState = SquadMemberState.INTERACTING;
+					gameObject.GetComponent<AISimpleLerp>().canMove = false;
+				}
 				break;
 		}
 	}
@@ -33,10 +38,13 @@ public class SquadMember : MonoBehaviour {
 		currentTask = t;
 		currentState = SquadMemberState.NAVIGATING;
 
+		// Set target position and allow squad member to move
 		gameObject.GetComponent<AISimpleLerp>().target = t.taskObject.transform;
+		gameObject.GetComponent<AISimpleLerp>().canMove = true;
 	}
 
 	public void CompleteTask() {
+		currentTask.taskObject.GetComponent<EntityStats>().tasked = false;
 		currentTask = null;
 		currentState = SquadMemberState.IDLE;
 	}

@@ -44,107 +44,109 @@ public class UIContextMenu : MonoBehaviour {
 
     void ObjectContextMenu() {
         EntityStats stats = activeObject.GetComponent<EntityStats>();
-        switch (activeObject.transform.tag) {
-            case "Couch":
-				CheckInspect(stats);
-				CheckTakeEvidence(stats);
-				CheckSeize(stats);
-                break;
-            case "Table":
-				CheckSeize(stats);
-                break;
-            case "Chair":
-				CheckSeize(stats);
-				break;
-            case "Fridge":
-				CheckInspect(stats);
-				CheckTakeEvidence(stats);
-				CheckSeize(stats);
-                break;
-            case "TV":
-				CheckInspect(stats);
-				CheckTakeEvidence(stats);
-				CheckSeize(stats);
-                break;
-            case "Bed":
-				CheckInspect(stats);
-				CheckTakeEvidence(stats);
-				CheckSeize(stats);
-                break;
-            case "Ipad":
-				CheckInspect(stats);
-				CheckTakeEvidence(stats);
-				CheckSeize(stats);
-				CheckDisconnect(stats);
-				CheckPowerOff(stats);
-                break;
-            case "Laptop":
-				CheckInspect(stats);
-				CheckTakeEvidence(stats);
-				CheckSeize(stats);
-				CheckDisconnect(stats);
-				CheckPowerOff(stats);
-				break;
-            case "Pendrive":
-				CheckSeize(stats);
-				break;
-            case "Disks":
-				CheckSeize(stats);
-				break;
-            case "Toilet":
-				CheckInspect(stats);
-				break;
-            case "Sink":
-				CheckInspect(stats);
-				break;
-            case "Shower":
-				CheckInspect(stats);
-				break;
-            case "Counter":
-				CheckInspect(stats);
-				break;
-            case "GameConsole":
-				CheckInspect(stats);
-				CheckTakeEvidence(stats);
-				CheckSeize(stats);
-				CheckDisconnect(stats);
-				CheckPowerOff(stats);
-				break;
-            case "Computer":
-				CheckInspect(stats);
-				CheckTakeEvidence(stats);
-				CheckSeize(stats);
-				CheckDisconnect(stats);
-				CheckPowerOff(stats);
-				break;
-            case "Router":
-				CheckInspect(stats);
-				CheckTakeEvidence(stats);
-				CheckSeize(stats);
-				CheckDisconnect(stats);
-				CheckPowerOff(stats);
-				break;
-            case "Phone":
-				CheckInspect(stats);
-				CheckTakeEvidence(stats);
-				CheckSeize(stats);
-				CheckDisconnect(stats);
-				CheckPowerOff(stats);
-				break;
-            case "Camera":
-				CheckInspect(stats);
-				CheckTakeEvidence(stats);
-				CheckSeize(stats);
-				CheckPowerOff(stats);
-				break;
-            case "PostItNotes":
-				CheckSeize(stats);
-				break;
-        }
-		// Back button
-        if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + menuDimensions.y - 20, menuDimensions.x, 20), "Back")) {
-            menuOpen = false;
-        }
+		if (!stats.tasked) {
+			switch (activeObject.transform.tag) {
+				case "Couch":
+					CheckInspect(stats);
+					CheckTakeEvidence(stats);
+					CheckSeize(stats);
+					break;
+				case "Table":
+					CheckSeize(stats);
+					break;
+				case "Chair":
+					CheckSeize(stats);
+					break;
+				case "Fridge":
+					CheckInspect(stats);
+					CheckTakeEvidence(stats);
+					CheckSeize(stats);
+					break;
+				case "TV":
+					CheckInspect(stats);
+					CheckTakeEvidence(stats);
+					CheckSeize(stats);
+					break;
+				case "Bed":
+					CheckInspect(stats);
+					CheckTakeEvidence(stats);
+					CheckSeize(stats);
+					break;
+				case "Ipad":
+					CheckInspect(stats);
+					CheckTakeEvidence(stats);
+					CheckSeize(stats);
+					CheckDisconnect(stats);
+					CheckPowerOff(stats);
+					break;
+				case "Laptop":
+					CheckInspect(stats);
+					CheckTakeEvidence(stats);
+					CheckSeize(stats);
+					CheckDisconnect(stats);
+					CheckPowerOff(stats);
+					break;
+				case "Pendrive":
+					CheckSeize(stats);
+					break;
+				case "Disks":
+					CheckSeize(stats);
+					break;
+				case "Toilet":
+					CheckInspect(stats);
+					break;
+				case "Sink":
+					CheckInspect(stats);
+					break;
+				case "Shower":
+					CheckInspect(stats);
+					break;
+				case "Counter":
+					CheckInspect(stats);
+					break;
+				case "GameConsole":
+					CheckInspect(stats);
+					CheckTakeEvidence(stats);
+					CheckSeize(stats);
+					CheckDisconnect(stats);
+					CheckPowerOff(stats);
+					break;
+				case "Computer":
+					CheckInspect(stats);
+					CheckTakeEvidence(stats);
+					CheckSeize(stats);
+					CheckDisconnect(stats);
+					CheckPowerOff(stats);
+					break;
+				case "Router":
+					CheckInspect(stats);
+					CheckTakeEvidence(stats);
+					CheckSeize(stats);
+					CheckDisconnect(stats);
+					CheckPowerOff(stats);
+					break;
+				case "Phone":
+					CheckInspect(stats);
+					CheckTakeEvidence(stats);
+					CheckSeize(stats);
+					CheckDisconnect(stats);
+					CheckPowerOff(stats);
+					break;
+				case "Camera":
+					CheckInspect(stats);
+					CheckTakeEvidence(stats);
+					CheckSeize(stats);
+					CheckPowerOff(stats);
+					break;
+				case "PostItNotes":
+					CheckSeize(stats);
+					break;
+			}
+		} else {
+			GUI.Box(new Rect(menuPosition.x, menuPosition.y + 40, menuDimensions.x, 25), "In progress...");
+		}
+		// Display back button
+		BackButton();
     }
 
     void MoveCharToPoint(Transform t) {
@@ -162,6 +164,8 @@ public class UIContextMenu : MonoBehaviour {
 					Debug.Log("Inspected " + activeObject.transform.tag);
 					activeObject.GetComponent<EntityStats>().InspectObject();
 					squadManager.AddTask(activeObject, TaskType.INSPECT);
+					stats.tasked = true;
+					menuOpen = false;
 				}
 			}
 		}
@@ -178,6 +182,8 @@ public class UIContextMenu : MonoBehaviour {
 						Debug.Log("Took evidence " + activeObject.transform.tag);
 						activeObject.GetComponent<EntityStats>().TakeObjectEvidence();
 						squadManager.AddTask(activeObject, TaskType.TAKE_EVIDENCE);
+						stats.tasked = true;
+						menuOpen = false;
 					}
 				}
 			}
@@ -192,6 +198,8 @@ public class UIContextMenu : MonoBehaviour {
 				Debug.Log("Seized " + activeObject.transform.tag);
 				activeObject.GetComponent<EntityStats>().SeizeObject();
 				squadManager.AddTask(activeObject, TaskType.SEIZE);
+				stats.tasked = true;
+				menuOpen = false;
 			}
 		}
 	}
@@ -206,6 +214,8 @@ public class UIContextMenu : MonoBehaviour {
 					Debug.Log("Disconnected " + activeObject.transform.tag);
 					activeObject.GetComponent<EntityStats>().DisconnectFromInternet();
 					squadManager.AddTask(activeObject, TaskType.DISCONNECT);
+					stats.tasked = true;
+					menuOpen = false;
 				}
 			}
 		}
@@ -221,8 +231,16 @@ public class UIContextMenu : MonoBehaviour {
 					Debug.Log("Powered off " + activeObject.transform.tag);
 					activeObject.GetComponent<EntityStats>().PowerOff();
 					squadManager.AddTask(activeObject, TaskType.POWER_OFF);
+					stats.tasked = true;
+					menuOpen = false;
 				}
 			}
+		}
+	}
+
+	void BackButton() {
+		if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + menuDimensions.y - 20, menuDimensions.x, 20), "Back")) {
+			menuOpen = false;
 		}
 	}
 }

@@ -12,6 +12,8 @@ public class EntityStats : MonoBehaviour {
     public bool disconnected = false;
     public bool poweredOff = false;
 
+	public bool tasked = false;
+
 	// Use this for initialization
 	void Start () {
 	

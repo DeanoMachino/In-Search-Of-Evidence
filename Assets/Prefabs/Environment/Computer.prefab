@@ -198,6 +198,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contextable: 1
   inspected: 0
+  seized: 0
+  takenEvidence: 0
+  disconnected: 0
+  poweredOff: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
