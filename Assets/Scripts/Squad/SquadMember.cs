@@ -5,16 +5,28 @@ using System.Collections;
 
 public class SquadMember : MonoBehaviour {
 
+    // Public
 	public SquadMemberState currentState = SquadMemberState.IDLE;
 	public Task currentTask;
 
+    // Private
+    private float activateTime, currentTime, differenceTime;
+    private float seconds, milliseconds;
+    private bool isInspecting;
+    private string timeString;
+
 	// Use this for initialization
-	void Start () {
-	
+	void Start ()
+    {
+        isInspecting = false;
+        currentTime = Time.deltaTime;
+        activateTime = Time.deltaTime;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        currentTime = Time.deltaTime;
+
 		switch (currentState) {
 			case SquadMemberState.IDLE:
 				// Wander around
@@ -32,6 +44,14 @@ public class SquadMember : MonoBehaviour {
 				}
 				break;
 		}
+
+        /*if (isInspecting)
+        {
+            Inspect();
+            currentState = SquadMemberState.INTERACTING;
+        }*/
+
+
 	}
 
 	public void GiveTask(Task t) {
@@ -51,9 +71,60 @@ public class SquadMember : MonoBehaviour {
 
 	void Interact() {
 
+        switch (currentTask.type)
+        {
+            case(TaskType.DISCONNECT):
+                break;
+            case(TaskType.INSPECT):
+                if (!isInspecting)
+                {
+                    StartInspect();
+                }
+                Inspect();
+                break;
+            case(TaskType.POWER_OFF):
+                break;
+            case(TaskType.SEIZE):
+                currentTask.taskObject.SetActive(false);
+                break;
+            case(TaskType.TAKE_EVIDENCE):
+                break;
+            default:
+                break;
+        }                
+
 		CompleteTask();
 	}
 
+    void StartInspect()
+    {
+        activateTime = Time.deltaTime;
+        isInspecting = true;
+        Debug.Log("Inspecting " + currentTask.taskObject.transform.tag);
+    }
+
+    void Inspect()
+    {
+        differenceTime = currentTime - activateTime;
+        seconds = Mathf.Floor(differenceTime % 60);
+        milliseconds = Mathf.Floor(differenceTime * 1000 % 1000);
+        timeString = string.Format("{0:00}:{1:000}", seconds, milliseconds);
+
+
+
+        if (differenceTime >= 5.0f)
+        {
+            isInspecting = false;
+        }
+    }
+
+    void OnGUI()
+    {
+        if (isInspecting)
+        {
+            GUI.Box(new Rect(Screen.width/2, Screen.height/2, 75.0f, 25.0f), timeString);
+        }
+    }
 
 }
 
