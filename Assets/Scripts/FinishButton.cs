@@ -34,7 +34,7 @@ public class FinishButton : MonoBehaviour
 
         if (isFinishMessageVisible)
         {
-            GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 100, 100.0f, 25.0f), displayString);
+            GUI.Box(new Rect(85.0f, Screen.height - 100.0f, 75.0f, 25.0f), displayString);
         }
     }
 }

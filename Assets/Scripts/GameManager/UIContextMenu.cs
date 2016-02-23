@@ -95,13 +95,13 @@ public class UIContextMenu : MonoBehaviour {
 				case "Toilet":
 					CheckInspect(stats);
 					break;
-				case "Sink":
-					CheckInspect(stats);
-					break;
+                case "Sink":
+                    CheckInspect(stats);
+                    break;
+                case "KitchenSink":
+                    CheckInspect(stats);
+                    break;
 				case "Shower":
-					CheckInspect(stats);
-					break;
-				case "Counter":
 					CheckInspect(stats);
 					break;
 				case "GameConsole":
@@ -141,6 +141,51 @@ public class UIContextMenu : MonoBehaviour {
 				case "PostItNotes":
 					CheckSeize(stats);
 					break;
+                case "Armchair":
+                    CheckInspect(stats);
+					CheckTakeEvidence(stats);
+					CheckSeize(stats);
+                    break;
+                case "Cabinet":
+                    CheckInspect(stats);
+					CheckTakeEvidence(stats);
+					CheckSeize(stats);
+                    break;
+                case "Books":
+                    CheckSeize(stats);
+                    break;
+                case "Clock":
+                    CheckInspect(stats);
+					CheckTakeEvidence(stats);
+					CheckSeize(stats);
+                    break;
+                case "Cooker":
+                    CheckSeize(stats);
+                    break;
+                case "Fireplace":
+                    CheckSeize(stats);
+                    break;
+                case "Kettle":
+                    CheckSeize(stats);
+                    break;
+                case "TableLamp":
+                    CheckSeize(stats);
+                    break;
+                case "FloorLamp":
+                    CheckSeize(stats);
+                    break;
+                case "Microwave":
+                    CheckSeize(stats);
+                    break;
+                case "Plantpot":
+                    CheckSeize(stats);
+                    break;
+                case "Vase":
+                    CheckSeize(stats);
+                    break;
+                case "Radiator":
+                    CheckSeize(stats);
+                    break;
 			}
 		} else {
 			GUI.Box(new Rect(menuPosition.x, menuPosition.y + 40, menuDimensions.x, 25), "In progress...");

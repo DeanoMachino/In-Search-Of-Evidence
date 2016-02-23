@@ -68,7 +68,10 @@ public class SquadMember : MonoBehaviour {
 	public void CompleteTask() {
 		currentTask.taskObject.GetComponent<EntityStats>().tasked = false;
 		currentTask = null;
+        Debug.Log(gameObject.ToString() + " state: " + currentState.ToString());
 		currentState = SquadMemberState.IDLE;
+        //Debug.Log(gameObject.ToString() + " state: " + currentState.ToString());
+
 	}
 
 	void Interact() {
@@ -122,7 +125,7 @@ public class SquadMember : MonoBehaviour {
     {
         if (isInspecting)
         {
-            GUI.Box(new Rect(Screen.width/2, Screen.height/2, 75.0f, 25.0f), timeString);
+            GUI.Box(new Rect(85.0f, Screen.height - 100.0f, 75.0f, 25.0f), timeString);
         }
     }
 
