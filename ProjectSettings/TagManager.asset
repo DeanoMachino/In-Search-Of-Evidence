@@ -20,13 +20,27 @@ TagManager:
   - Toilet
   - Sink
   - Shower
-  - Counter
   - GameConsole
   - Computer
   - Router
   - Phone
   - Camera
   - PostItNotes
+  - Armchair
+  - KitchenSink
+  - KitchenTop
+  - Cabinet
+  - Books
+  - Clock
+  - Cooker
+  - Fireplace
+  - Kettle
+  - TableLamp
+  - FloorLamp
+  - Microwave
+  - Plantpot
+  - Radiator
+  - Vase
   layers:
   - Default
   - TransparentFX
@@ -38,7 +52,7 @@ TagManager:
   - 
   - Ground
   - Environment
-  - 
+  - Walls
   - 
   - 
   - 

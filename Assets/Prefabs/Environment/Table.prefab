@@ -111,6 +111,8 @@ MonoBehaviour:
   takenEvidence: 0
   disconnected: 0
   poweredOff: 0
+  tasked: 0
+  evidencePoints: -2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -129,6 +131,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: evidencePoints
+      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
