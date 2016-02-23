@@ -5,6 +5,7 @@ using System.Collections;
 
 public class EntityStats : MonoBehaviour {
 
+    // Public
     public bool contextable = true;
     public bool inspected = false;
     public bool seized = false;
@@ -13,6 +14,10 @@ public class EntityStats : MonoBehaviour {
     public bool poweredOff = false;
 
 	public bool tasked = false;
+
+    public float evidencePoints = 0.0f;
+
+    // Private
 
 	// Use this for initialization
 	void Start () {

@@ -111,6 +111,7 @@ MonoBehaviour:
   disconnected: 0
   poweredOff: 0
   tasked: 0
+  evidencePoints: 0
 --- !u!4 &12449864 stripped
 Transform:
   m_PrefabParentObject: {fileID: 412524, guid: 9b2365d2faea2524981aa36e262ed8cb, type: 2}
@@ -2262,11 +2263,15 @@ Prefab:
       objectReference: {fileID: 1978622185}
     - target: {fileID: 197750, guid: e0b81fcab12d28a44827780c460afcb1, type: 2}
       propertyPath: m_Name
-      value: SquadMember (1)
+      value: Officer2
       objectReference: {fileID: 0}
     - target: {fileID: 11416512, guid: e0b81fcab12d28a44827780c460afcb1, type: 2}
       propertyPath: speed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 197750, guid: e0b81fcab12d28a44827780c460afcb1, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e0b81fcab12d28a44827780c460afcb1, type: 2}
@@ -2627,9 +2632,11 @@ GameObject:
   - 114: {fileID: 897564636}
   - 114: {fileID: 897564637}
   - 114: {fileID: 897564638}
+  - 114: {fileID: 897564640}
+  - 114: {fileID: 897564639}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2658,7 +2665,7 @@ Transform:
   - {fileID: 495612201}
   - {fileID: 1978622185}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!114 &897564636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2698,6 +2705,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7456c724f4927e44826a13adb650e25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &897564639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 897564633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25a50141f72eb8e4f814b547921574c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalScore: 0
+--- !u!114 &897564640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 897564633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d64a3be40916c745adb244c7abc9e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &901408599
@@ -2800,6 +2830,14 @@ Prefab:
     - target: {fileID: 11416512, guid: e0b81fcab12d28a44827780c460afcb1, type: 2}
       propertyPath: speed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474250, guid: e0b81fcab12d28a44827780c460afcb1, type: 2}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 897564633}
+    - target: {fileID: 197750, guid: e0b81fcab12d28a44827780c460afcb1, type: 2}
+      propertyPath: m_Name
+      value: Officer1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e0b81fcab12d28a44827780c460afcb1, type: 2}
@@ -3657,7 +3695,7 @@ Transform:
   - {fileID: 829056374}
   - {fileID: 15750365}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!4 &1214207692 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400526, guid: 703764bcb8fad904697bdf13dc9eaa21, type: 2}
@@ -4490,6 +4528,7 @@ MonoBehaviour:
   disconnected: 0
   poweredOff: 0
   tasked: 0
+  evidencePoints: 0
 --- !u!65 &1515082878
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4897,6 +4936,10 @@ Prefab:
       propertyPath: ID
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 11467206, guid: 886a7f8a1b94ec641970cb7f9afe57ff, type: 2}
+      propertyPath: evidencePoints
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 886a7f8a1b94ec641970cb7f9afe57ff, type: 2}
   m_IsPrefabParent: 0
@@ -5080,6 +5123,7 @@ MonoBehaviour:
   disconnected: 0
   poweredOff: 0
   tasked: 0
+  evidencePoints: 0
 --- !u!4 &1631264969 stripped
 Transform:
   m_PrefabParentObject: {fileID: 492096, guid: 843ff21fa2e38be4e9d49697a5d308a4, type: 2}

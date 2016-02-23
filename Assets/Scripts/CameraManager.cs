@@ -9,7 +9,7 @@ public class CameraManager : MonoBehaviour
 
 	// Public variables
 	public float dragSensitivity; // 0.0025 works well
-	public float zoomSpeed, minZoom, maxZoom;
+	public float zoomSpeed, minZoom, maxZoom; // 0.5, 1, 10
 	public Camera thisCamera;
 
 	// Private variables
