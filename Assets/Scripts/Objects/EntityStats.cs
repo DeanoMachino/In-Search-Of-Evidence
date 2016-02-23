@@ -8,7 +8,7 @@ public class EntityStats : MonoBehaviour {
     public bool contextable = true;
     public bool inspected = false;
     public bool seized = false;
-    public bool tookContents = false;
+    public bool takenEvidence = false;
     public bool disconnected = false;
     public bool poweredOff = false;
 
@@ -32,9 +32,9 @@ public class EntityStats : MonoBehaviour {
         seized = true;
     }
 
-    public void TakeObjectContents() {
-        Debug.Log("Took object contents");
-        tookContents = true;
+    public void TakeObjectEvidence() {
+        Debug.Log("Took object evidence");
+        takenEvidence = true;
     }
 
     public void DisconnectFromInternet() {

@@ -11,7 +11,7 @@ public class UIContextMenu : MonoBehaviour {
     private Vector2 menuDimensions = new Vector2(250, 200);
     private int menuButtons = 1;
 
-    public GameObject polis;
+    public SquadManager squadManager;
 
 	// Use this for initialization
 	void Start () {
@@ -45,501 +45,103 @@ public class UIContextMenu : MonoBehaviour {
     void ObjectContextMenu() {
         EntityStats stats = activeObject.GetComponent<EntityStats>();
         switch (activeObject.transform.tag) {
-            case "Door":
-
-                break;
             case "Couch":
-                if (!stats.inspected) {
-                    // Inspect button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Inspect")) {
-                        Debug.Log("Inspected " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().InspectObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                } else {
-                    if (!stats.tookContents) {
-                        // Take contents button
-                        if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Take contents")) {
-                            Debug.Log("Took contents " + activeObject.transform.tag);
-                            activeObject.GetComponent<EntityStats>().TakeObjectContents();
-                            MoveCharToPoint(activeObject.transform);
-                        }
-                    }
-                }
-                if (!stats.seized) {
-                    // Seize button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 2, menuDimensions.x, 20), "Seize")) {
-                        Debug.Log("Seized " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().SeizeObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
+				CheckInspect(stats);
+				CheckTakeEvidence(stats);
+				CheckSeize(stats);
                 break;
             case "Table":
-                if (!stats.seized) {
-                    // Seize button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Seize")) {
-                        Debug.Log("Seized " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().SeizeObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
+				CheckSeize(stats);
                 break;
             case "Chair":
-                if (!stats.seized) {
-                    // Seize button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Seize")) {
-                        Debug.Log("Seized " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().SeizeObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                break;
+				CheckSeize(stats);
+				break;
             case "Fridge":
-                if (!stats.inspected) {
-                    // Inspect button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Inspect")) {
-                        Debug.Log("Inspected " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().InspectObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                } else {
-                    if (!stats.tookContents) {
-                        // Take contents button
-                        if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Take contents")) {
-                            Debug.Log("Took contents " + activeObject.transform.tag);
-                            activeObject.GetComponent<EntityStats>().TakeObjectContents();
-                            MoveCharToPoint(activeObject.transform);
-                        }
-                    }
-                }
-                if (!stats.seized) {
-                    // Seize button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 2, menuDimensions.x, 20), "Seize")) {
-                        Debug.Log("Seized " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().SeizeObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
+				CheckInspect(stats);
+				CheckTakeEvidence(stats);
+				CheckSeize(stats);
                 break;
             case "TV":
-                if (!stats.inspected) {
-                    // Inspect button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Inspect")) {
-                        Debug.Log("Inspected " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().InspectObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                } else {
-                    if (!stats.tookContents) {
-                        // Take contents button
-                        if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Take contents")) {
-                            Debug.Log("Took contents " + activeObject.transform.tag);
-                            activeObject.GetComponent<EntityStats>().TakeObjectContents();
-                            MoveCharToPoint(activeObject.transform);
-                        }
-                    }
-                }
-                if (!stats.seized) {
-                    // Seize button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 2, menuDimensions.x, 20), "Seize")) {
-                        Debug.Log("Seized " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().SeizeObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
+				CheckInspect(stats);
+				CheckTakeEvidence(stats);
+				CheckSeize(stats);
                 break;
             case "Bed":
-                if (!stats.inspected) {
-                    // Inspect button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Inspect")) {
-                        Debug.Log("Inspected " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().InspectObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                } else {
-                    if (!stats.tookContents) {
-                        // Take contents button
-                        if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Take contents")) {
-                            Debug.Log("Took contents " + activeObject.transform.tag);
-                            activeObject.GetComponent<EntityStats>().TakeObjectContents();
-                            MoveCharToPoint(activeObject.transform);
-                        }
-                    }
-                }
-                if (!stats.seized) {
-                    // Seize button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 *2, menuDimensions.x, 20), "Seize")) {
-                        Debug.Log("Seized " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().SeizeObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
+				CheckInspect(stats);
+				CheckTakeEvidence(stats);
+				CheckSeize(stats);
                 break;
             case "Ipad":
-                if (!stats.inspected) {
-                    // Inspect button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Inspect")) {
-                        Debug.Log("Inspected " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().InspectObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                } else {
-                    if (!stats.tookContents) {
-                        // Take contents button
-                        if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Take contents")) {
-                            Debug.Log("Took contents " + activeObject.transform.tag);
-                            activeObject.GetComponent<EntityStats>().TakeObjectContents();
-                            MoveCharToPoint(activeObject.transform);
-                        }
-                    }
-                }
-                if (!stats.seized) {
-                    // Seize button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 2, menuDimensions.x, 20), "Seize")) {
-                        Debug.Log("Seized " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().SeizeObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                if (!stats.disconnected) {
-                    // Disconnect button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 3, menuDimensions.x, 20), "Disconnect")) {
-                        Debug.Log("Disconnected " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().DisconnectFromInternet();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                if (!stats.poweredOff) {
-                    // Powered Off button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 4, menuDimensions.x, 20), "Power off")) {
-                        Debug.Log("Powered off " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().PowerOff();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
+				CheckInspect(stats);
+				CheckTakeEvidence(stats);
+				CheckSeize(stats);
+				CheckDisconnect(stats);
+				CheckPowerOff(stats);
                 break;
             case "Laptop":
-                if (!stats.inspected) {
-                    // Inspect button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Inspect")) {
-                        Debug.Log("Inspected " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().InspectObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                } else {
-                    if (!stats.tookContents) {
-                        // Take contents button
-                        if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Take contents")) {
-                            Debug.Log("Took contents " + activeObject.transform.tag);
-                            activeObject.GetComponent<EntityStats>().TakeObjectContents();
-                            MoveCharToPoint(activeObject.transform);
-                        }
-                    }
-                }
-                if (!stats.seized) {
-                    // Seize button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 2, menuDimensions.x, 20), "Seize")) {
-                        Debug.Log("Seized " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().SeizeObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                if (!stats.disconnected) {
-                    // Disconnect button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 3, menuDimensions.x, 20), "Disconnect")) {
-                        Debug.Log("Disconnected " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().DisconnectFromInternet();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                if (!stats.poweredOff) {
-                    // Powered Off button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 4, menuDimensions.x, 20), "Power off")) {
-                        Debug.Log("Powered off " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().PowerOff();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                break;
+				CheckInspect(stats);
+				CheckTakeEvidence(stats);
+				CheckSeize(stats);
+				CheckDisconnect(stats);
+				CheckPowerOff(stats);
+				break;
             case "Pendrive":
-                if (!stats.seized) {
-                    // Seize button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Seize")) {
-                        Debug.Log("Seized " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().SeizeObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                break;
+				CheckSeize(stats);
+				break;
             case "Disks":
-                if (!stats.seized) {
-                    // Seize button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Seize")) {
-                        Debug.Log("Seized " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().SeizeObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                break;
+				CheckSeize(stats);
+				break;
             case "Toilet":
-                if (!stats.inspected) {
-                    // Inspect button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Inspect")) {
-                        Debug.Log("Inspected " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().InspectObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                break;
+				CheckInspect(stats);
+				break;
             case "Sink":
-                if (!stats.inspected) {
-                    // Inspect button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Inspect")) {
-                        Debug.Log("Inspected " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().InspectObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                break;
+				CheckInspect(stats);
+				break;
             case "Shower":
-                if (!stats.inspected) {
-                    // Inspect button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Inspect")) {
-                        Debug.Log("Inspected " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().InspectObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                break;
+				CheckInspect(stats);
+				break;
             case "Counter":
-                if (!stats.inspected) {
-                    // Inspect button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Inspect")) {
-                        Debug.Log("Inspected " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().InspectObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                break;
+				CheckInspect(stats);
+				break;
             case "GameConsole":
-                if (!stats.inspected) {
-                    // Inspect button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Inspect")) {
-                        Debug.Log("Inspected " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().InspectObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                } else {
-                    if (!stats.tookContents) {
-                        // Take contents button
-                        if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Take contents")) {
-                            Debug.Log("Took contents " + activeObject.transform.tag);
-                            activeObject.GetComponent<EntityStats>().TakeObjectContents();
-                            MoveCharToPoint(activeObject.transform);
-                        }
-                    }
-                }
-                if (!stats.seized) {
-                    // Seize button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 2, menuDimensions.x, 20), "Seize")) {
-                        Debug.Log("Seized " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().SeizeObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                if (!stats.disconnected) {
-                    // Disconnect button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 3, menuDimensions.x, 20), "Disconnect")) {
-                        Debug.Log("Disconnected " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().DisconnectFromInternet();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                if (!stats.poweredOff) {
-                    // Powered Off button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 4, menuDimensions.x, 20), "Power off")) {
-                        Debug.Log("Powered off " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().PowerOff();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                break;
+				CheckInspect(stats);
+				CheckTakeEvidence(stats);
+				CheckSeize(stats);
+				CheckDisconnect(stats);
+				CheckPowerOff(stats);
+				break;
             case "Computer":
-                if (!stats.inspected) {
-                    // Inspect button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Inspect")) {
-                        Debug.Log("Inspected " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().InspectObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                } else {
-                    if (!stats.tookContents) {
-                        // Take contents button
-                        if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Take contents")) {
-                            Debug.Log("Took contents " + activeObject.transform.tag);
-                            activeObject.GetComponent<EntityStats>().TakeObjectContents();
-                            MoveCharToPoint(activeObject.transform);
-                        }
-                    }
-                }
-                if (!stats.seized) {
-                    // Seize button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 2, menuDimensions.x, 20), "Seize")) {
-                        Debug.Log("Seized " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().SeizeObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                if (!stats.disconnected) {
-                    // Disconnect button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 3, menuDimensions.x, 20), "Disconnect")) {
-                        Debug.Log("Disconnected " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().DisconnectFromInternet();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                if (!stats.poweredOff) {
-                    // Powered Off button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 4, menuDimensions.x, 20), "Power off")) {
-                        Debug.Log("Powered off " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().PowerOff();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                break;
+				CheckInspect(stats);
+				CheckTakeEvidence(stats);
+				CheckSeize(stats);
+				CheckDisconnect(stats);
+				CheckPowerOff(stats);
+				break;
             case "Router":
-                if (!stats.inspected) {
-                    // Inspect button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Inspect")) {
-                        Debug.Log("Inspected " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().InspectObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                } else {
-                    if (!stats.tookContents) {
-                        // Take contents button
-                        if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Take contents")) {
-                            Debug.Log("Took contents " + activeObject.transform.tag);
-                            activeObject.GetComponent<EntityStats>().TakeObjectContents();
-                            MoveCharToPoint(activeObject.transform);
-                        }
-                    }
-                }
-                if (!stats.seized) {
-                    // Seize button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 2, menuDimensions.x, 20), "Seize")) {
-                        Debug.Log("Seized " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().SeizeObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                if (!stats.disconnected) {
-                    // Disconnect button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 3, menuDimensions.x, 20), "Disconnect")) {
-                        Debug.Log("Disconnected " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().DisconnectFromInternet();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                if (!stats.poweredOff) {
-                    // Powered Off button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 4, menuDimensions.x, 20), "Power off")) {
-                        Debug.Log("Powered off " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().PowerOff();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                break;
+				CheckInspect(stats);
+				CheckTakeEvidence(stats);
+				CheckSeize(stats);
+				CheckDisconnect(stats);
+				CheckPowerOff(stats);
+				break;
             case "Phone":
-                if (!stats.inspected) {
-                    // Inspect button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Inspect")) {
-                        Debug.Log("Inspected " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().InspectObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                } else {
-                    if (!stats.tookContents) {
-                        // Take contents button
-                        if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Take contents")) {
-                            Debug.Log("Took contents " + activeObject.transform.tag);
-                            activeObject.GetComponent<EntityStats>().TakeObjectContents();
-                            MoveCharToPoint(activeObject.transform);
-                        }
-                    }
-                }
-                if (!stats.seized) {
-                    // Seize button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 2, menuDimensions.x, 20), "Seize")) {
-                        Debug.Log("Seized " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().SeizeObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                if (!stats.disconnected) {
-                    // Disconnect button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 3, menuDimensions.x, 20), "Disconnect")) {
-                        Debug.Log("Disconnected " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().DisconnectFromInternet();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                if (!stats.poweredOff) {
-                    // Powered Off button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 4, menuDimensions.x, 20), "Power off")) {
-                        Debug.Log("Powered off " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().PowerOff();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                break;
+				CheckInspect(stats);
+				CheckTakeEvidence(stats);
+				CheckSeize(stats);
+				CheckDisconnect(stats);
+				CheckPowerOff(stats);
+				break;
             case "Camera":
-                if (!stats.inspected) {
-                    // Inspect button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Inspect")) {
-                        Debug.Log("Inspected " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().InspectObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                } else {
-                    if (!stats.tookContents) {
-                        // Take contents button
-                        if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Take contents")) {
-                            Debug.Log("Took contents " + activeObject.transform.tag);
-                            activeObject.GetComponent<EntityStats>().TakeObjectContents();
-                            MoveCharToPoint(activeObject.transform);
-                        }
-                    }
-                }
-                if (!stats.seized) {
-                    // Seize button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 2, menuDimensions.x, 20), "Seize")) {
-                        Debug.Log("Seized " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().SeizeObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                if (!stats.poweredOff) {
-                    // Powered Off button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 4, menuDimensions.x, 20), "Power off")) {
-                        Debug.Log("Powered off " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().PowerOff();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                break;
+				CheckInspect(stats);
+				CheckTakeEvidence(stats);
+				CheckSeize(stats);
+				CheckPowerOff(stats);
+				break;
             case "PostItNotes":
-                if (!stats.seized) {
-                    // Seize button
-                    if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 2, menuDimensions.x, 20), "Seize")) {
-                        Debug.Log("Seized " + activeObject.transform.tag);
-                        activeObject.GetComponent<EntityStats>().SeizeObject();
-                        MoveCharToPoint(activeObject.transform);
-                    }
-                }
-                break;
+				CheckSeize(stats);
+				break;
         }
+		// Back button
         if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + menuDimensions.y - 20, menuDimensions.x, 20), "Back")) {
             menuOpen = false;
         }
@@ -547,6 +149,80 @@ public class UIContextMenu : MonoBehaviour {
 
     void MoveCharToPoint(Transform t) {
         Debug.Log("MoveCharToPoint");
-        polis.GetComponent<AISimpleLerp>().target = t;
+        //polis.GetComponent<AISimpleLerp>().target = t;
     }
+
+	void CheckInspect(EntityStats stats) {
+		// If object hasb't been seized
+		if (!stats.seized) {
+			// If object hasn't been inspected
+			if (!stats.inspected) {
+				// Inspect button
+				if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Inspect")) {
+					Debug.Log("Inspected " + activeObject.transform.tag);
+					activeObject.GetComponent<EntityStats>().InspectObject();
+					squadManager.AddTask(activeObject, TaskType.INSPECT);
+				}
+			}
+		}
+	}
+
+	void CheckTakeEvidence(EntityStats stats) {
+		// If object hasn't been seized
+		if (!stats.seized) {
+			// If object evidence hasn't been taken
+			if (stats.inspected) {
+				if (!stats.takenEvidence) {
+					// Take contents button
+					if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20, menuDimensions.x, 20), "Take evidence")) {
+						Debug.Log("Took evidence " + activeObject.transform.tag);
+						activeObject.GetComponent<EntityStats>().TakeObjectEvidence();
+						squadManager.AddTask(activeObject, TaskType.TAKE_EVIDENCE);
+					}
+				}
+			}
+		}
+	}
+
+	void CheckSeize(EntityStats stats) {
+		// If object hasn't been seized
+		if (!stats.seized) {
+			// Seize button
+			if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 2, menuDimensions.x, 20), "Seize")) {
+				Debug.Log("Seized " + activeObject.transform.tag);
+				activeObject.GetComponent<EntityStats>().SeizeObject();
+				squadManager.AddTask(activeObject, TaskType.SEIZE);
+			}
+		}
+	}
+
+	void CheckDisconnect(EntityStats stats) {
+		// If object hasn't been seized
+		if (!stats.seized) {
+			// If object hasn't been disconnected
+			if (!stats.disconnected) {
+				// Disconnect button
+				if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 3, menuDimensions.x, 20), "Disconnect")) {
+					Debug.Log("Disconnected " + activeObject.transform.tag);
+					activeObject.GetComponent<EntityStats>().DisconnectFromInternet();
+					squadManager.AddTask(activeObject, TaskType.DISCONNECT);
+				}
+			}
+		}
+	}
+
+	void CheckPowerOff(EntityStats stats) {
+		// If object hasn't been seized
+		if (!stats.seized) {
+			// If object hasn't been powered off
+			if (!stats.poweredOff) {
+				// Powered Off button
+				if (GUI.Button(new Rect(menuPosition.x, menuPosition.y + 20 * 4, menuDimensions.x, 20), "Power off")) {
+					Debug.Log("Powered off " + activeObject.transform.tag);
+					activeObject.GetComponent<EntityStats>().PowerOff();
+					squadManager.AddTask(activeObject, TaskType.POWER_OFF);
+				}
+			}
+		}
+	}
 }
