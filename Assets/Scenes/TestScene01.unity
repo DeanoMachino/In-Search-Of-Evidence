@@ -566,6 +566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   squadList:
   - {fileID: 829056368}
+  - {fileID: 829056368}
 --- !u!114 &495612203
 MonoBehaviour:
   m_ObjectHideFlags: 0
